@@ -27,9 +27,9 @@ services:
     image: nginx:alpine
     volumes:
       - ./frontend:/usr/share/nginx/html
-      - ./nginx.conf:/etc/nginx/conf.d/nginx.conf  # Change to a unique filename to avoid conflicts
+      - /home/ubuntu/telecom-inventory/nginx.conf:/etc/nginx/conf.d/nginx.conf  # Absolute path fix
     ports:
-      - "8880:80"  # Exposes on host port 8880
+      - "8880:80"
     depends_on:
       - backend
     networks:
