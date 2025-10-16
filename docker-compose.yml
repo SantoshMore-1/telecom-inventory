@@ -13,7 +13,9 @@ services:
       - app-network
 
   backend:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile
     depends_on:
       - db
     environment:
@@ -25,7 +27,7 @@ services:
     image: nginx:alpine
     volumes:
       - ./frontend:/usr/share/nginx/html
-      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf  # Corrected mount path
     ports:
       - "8880:80"  # Exposes on host port 8880
     depends_on:
